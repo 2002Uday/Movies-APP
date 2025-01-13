@@ -12,36 +12,6 @@ The application allows users to:
 
 ---
 
-## Features
-
-### Public Features
-- View all movies.
-- View movie details by ID.
-
-### Admin Features
-- Add a new movie.
-- Update movie details.
-- Delete a movie.
-
----
-
-## Tech Stack
-
-### Frontend
-- React.js
-- Material-UI (MUI) for styling.
-- Tailwind CSS for responsiveness.
-- `react-router-dom` for routing.
-- `cookies-js` for handling authentication tokens.
-
-### Backend
-- Node.js
-- Express.js
-- MongoDB (via Mongoose for object modeling).
-- JWT for authentication.
-
----
-
 ## Getting Started
 
 ### Prerequisites
@@ -59,25 +29,12 @@ Ensure you have the following installed:
    cd movie-management-app
    ```
 
-2. Install dependencies for the backend:
-   ```bash
-   cd backend
-   npm install
-   ```
-
 3. Install dependencies for the frontend:
    ```bash
-   cd ../frontend
    npm install
    ```
 
 4. Set up environment variables:
-   - Create a `.env` file in the `backend` directory and configure the following:
-     ```env
-     PORT=5000
-     MONGO_URI=your_mongodb_connection_string
-     JWT_SECRET=your_jwt_secret
-     ```
    - Create a `.env` file in the `frontend` directory for API endpoints (if necessary):
      ```env
      REACT_APP_API_URL=http://localhost:5000
@@ -85,19 +42,13 @@ Ensure you have the following installed:
 
 ### Running the Application
 
-1. Start the backend server:
-   ```bash
-   cd backend
-   npm start
-   ```
-
-2. Start the frontend server:
+1. Start the frontend server:
    ```bash
    cd frontend
    npm run dev
    ```
 
-3. Open your browser and navigate to:
+2. Open your browser and navigate to:
    ```
    http://localhost:5173
    ```
@@ -119,7 +70,7 @@ http://localhost:5000
   ```json
   {
     "email": "user@example.com",
-    "password": "password123"
+    "password": "password123",
   }
   ```
 - Response:
@@ -135,7 +86,6 @@ http://localhost:5000
 - Request Body:
   ```json
   {
-    "name": "John Doe",
     "email": "user@example.com",
     "password": "password123",
     "role": "admin" // or "user"
@@ -152,7 +102,7 @@ http://localhost:5000
 ### Movie Endpoints
 
 #### 1. Get All Movies (Public Access)
-**GET** `/movies`
+**GET** `/movies/list`
 - Response:
   ```json
   [
@@ -167,21 +117,7 @@ http://localhost:5000
   ]
   ```
 
-#### 2. Get Movie by ID (Public Access)
-**GET** `/movies/:id`
-- Response:
-  ```json
-  {
-    "_id": "movie_id",
-    "title": "Movie Title",
-    "description": "Description",
-    "year": 2023,
-    "rating": 4.5,
-    "runTime": 120
-  }
-  ```
-
-#### 3. Add Movie (Admin Access)
+#### 2. Add Movie (Admin Access)
 **POST** `/movies/add`
 - Request Body:
   ```json
@@ -201,7 +137,7 @@ http://localhost:5000
   }
   ```
 
-#### 4. Update Movie (Admin Access)
+#### 3. Update Movie (Admin Access)
 **PUT** `/movies/update/:id`
 - Request Body:
   ```json
@@ -218,7 +154,7 @@ http://localhost:5000
   }
   ```
 
-#### 5. Delete Movie (Admin Access)
+#### 4. Delete Movie (Admin Access)
 **DELETE** `/movies/delete/:id`
 - Response:
   ```json
@@ -227,40 +163,3 @@ http://localhost:5000
     "message": "Movie deleted successfully"
   }
   ```
-
----
-
-## Folder Structure
-
-### Backend
-```
-backend/
-├── controllers/
-├── models/
-├── routes/
-├── middleware/
-├── server.js
-```
-
-### Frontend
-```
-frontend/
-├── src/
-│   ├── components/
-│   ├── pages/
-│   ├── api/
-│   └── App.jsx
-├── public/
-└── vite.config.js
-```
-
----
-
-## Contributing
-Feel free to fork this repository and contribute by submitting pull requests. Make sure to follow best practices and write clean, maintainable code.
-
----
-
-## License
-This project is licensed under the [MIT License](LICENSE).
-
