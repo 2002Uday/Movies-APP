@@ -4,7 +4,6 @@ import MovieList from "./components/MovieList";
 import MovieForm from "./components/MovieForm";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
-import ProtectedRoute from "./components/ProtectedRoute";
 import Navbar from "./components/Navbar";
 
 const App = () => {
@@ -13,7 +12,7 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<MovieList />} />
-        <Route path="/movie/add" element={<ProtectedRoute><MovieForm /></ProtectedRoute>} />
+        <Route path="/movie/add" element={<MovieForm />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>
