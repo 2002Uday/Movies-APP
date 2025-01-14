@@ -22,8 +22,7 @@ import {
 } from "@mui/material";
 import { deleteMovie, updateMovie } from "../api";
 
-const API_BASE_URL = "http://localhost:5000";
-
+const API_BASE_URL = import.meta.env.VITE_BASE_URL;
 const MovieList = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
