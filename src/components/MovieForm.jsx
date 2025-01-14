@@ -21,6 +21,7 @@ const MovieForm = () => {
     try {
       await createMovie(movieData, movieData._id);
       alert("Movie created successfully!");
+      window.location.href = "/";
     } catch (error) {
       console.error("Error creating movie:", error.message);
       alert("Failed to create movie.");
