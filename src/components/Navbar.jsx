@@ -41,7 +41,6 @@ const Navbar = () => {
   };
 
   const navItems = [
-    // { label: "Add Movie", path: "" },
     { label: "Login", path: "/login" },
     { label: "Signup", path: "/signup" },
   ];
@@ -52,6 +51,20 @@ const Navbar = () => {
         Movies-App
       </Typography>
       <List>
+        {isAdminUser && (
+          <ListItemButton sx={{ textAlign: "center" }}>
+            <Link
+              to={"/movie/add"}
+              style={{
+                textDecoration: "none",
+                color: "inherit",
+                width: "100%",
+              }}
+            >
+              <Button variant="contained">{"Add New Movie"}</Button>
+            </Link>
+          </ListItemButton>
+        )}
         {!isLoggin ? (
           navItems.map((item) => (
             <ListItem key={item.label} disablePadding>
@@ -119,7 +132,7 @@ const Navbar = () => {
                 </Link>
               ))
             ) : (
-              <Button variant="contained" onClick={handleLogout} sx={{ml: 2}}>
+              <Button variant="contained" onClick={handleLogout} sx={{ ml: 2 }}>
                 Logout
               </Button>
             )}

@@ -149,10 +149,15 @@ const MovieList = () => {
     }
   };
 
-  if (loading && movies.length === 0) return <CircularProgress />;
+  if (loading && movies.length === 0)
+    return (
+      <Box sx={{ width: "full", height: "90vh" , display: "flex", justifyContent: "center", alignItems: "center" }}>
+        <CircularProgress />
+      </Box>
+    );
 
   return (
-    <Box padding={4}>
+    <Box sx={{ padding: { xs: 2, lg: 4 } }}>
       <Typography
         variant="h4"
         gutterBottom
