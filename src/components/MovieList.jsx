@@ -195,18 +195,26 @@ const MovieList = () => {
             borderRadius: 3,
             boxShadow: 4,
             display: "flex",
+            flexDirection: { xs: "column", sm: "row" }, // Stacked on small screens and row on larger screens
             justifyContent: "space-between",
           }}
         >
-          <CardContent sx={{ width: 200 }}>
+          <CardContent sx={{ width: { xs: "100%", sm: 200 } }}>
             <img
               key={movie._id}
               src={movie.bannerImage}
               alt={movie.title}
-              style={{ borderRadius: 10, height: 200, width: 350 }}
+              style={{
+                borderRadius: 10,
+                height: 200,
+                width: "100%", // Makes image responsive
+                objectFit: "cover", // Ensures the image aspect ratio is maintained
+              }}
             />
           </CardContent>
-          <CardContent sx={{ width: "80%" }}>
+          <CardContent
+            sx={{ width: { xs: "100%", sm: "80%" }, padding: { xs: 1, sm: 2 } }}
+          >
             <Typography variant="h5">{movie.title}</Typography>
             <Typography>{movie.description}</Typography>
             <Typography>Year: {movie.year}</Typography>
@@ -218,9 +226,7 @@ const MovieList = () => {
                   5,
                   Math.max(
                     1,
-                    Math.round(
-                      ((movie.rating - 5) / (5 - 1)) * 4
-                    ) + 1
+                    Math.round(((movie.rating - 5) / (5 - 1)) * 4) + 1
                   )
                 )}
                 readOnly
@@ -232,16 +238,21 @@ const MovieList = () => {
             <CardContent
               sx={{
                 display: "flex",
-                flexDirection: "column",
+                flexDirection: "row",
                 justifyContent: "center",
                 gap: 2,
-                minWidth: 120,
+                minWidth: { xs: "100%", sm: 120 }, // Full width on small screens, fixed width on larger ones
+                alignItems: { xs: "center", sm: "flex-start" }, // Center on small screens, left-aligned on large screens
               }}
             >
               <Button
                 variant="outlined"
                 onClick={() => handleOpen(movie)}
-                sx={{ borderRadius: 2 }}
+                sx={{
+                  borderRadius: 2,
+                  width: "100%", // Full width on small screens
+                  maxWidth: 120, // Restrict width on larger screens
+                }}
               >
                 Edit
               </Button>
@@ -249,7 +260,11 @@ const MovieList = () => {
                 variant="contained"
                 color="error"
                 onClick={() => handleDelete(movie._id)}
-                sx={{ borderRadius: 2 }}
+                sx={{
+                  borderRadius: 2,
+                  width: "100%", // Full width on small screens
+                  maxWidth: 120, // Restrict width on larger screens
+                }}
               >
                 Delete
               </Button>
