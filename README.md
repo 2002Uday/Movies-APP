@@ -37,7 +37,7 @@ Ensure you have the following installed:
 4. Set up environment variables:
    - Create a `.env` file in the `frontend` directory for API endpoints (if necessary):
      ```env
-     REACT_APP_API_URL=http://localhost:5000
+     REACT_APP_API_URL=${API_BASE_URL}
      ```
 
 ### Running the Application
@@ -59,7 +59,7 @@ Ensure you have the following installed:
 
 ### Base URL
 ```
-http://localhost:5000
+${API_BASE_URL}
 ```
 
 ### Authentication Endpoints

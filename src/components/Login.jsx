@@ -9,11 +9,11 @@ const Login = () => {
   const handleChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
-
+  const API_BASE_URL = import.meta.env.VITE_BASE_URL;
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/auth/login", credentials);
+      const response = await axios.post(`${API_BASE_URL}/auth/login`, credentials);
       setToken(response.data.token);
       alert("Login successful!");
       window.location.href = "/";

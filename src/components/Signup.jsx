@@ -8,7 +8,7 @@ const Signup = () => {
     email: "",
     password: "",
   });
-
+  const API_BASE_URL = import.meta.env.VITE_BASE_URL;
   const handleChange = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
   };
@@ -17,7 +17,7 @@ const Signup = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:5000/auth/signup",
+        `${API_BASE_URL}/auth/signup`,
         userData
       );
       setToken(response.data.token);
